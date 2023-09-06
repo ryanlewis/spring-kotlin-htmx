@@ -41,7 +41,7 @@ class HelloController {
     }
 
     @GetMapping(WELCOME_MESSAGE_ROUTE, produces = [TEXT_HTML_UTF8])
-    fun fragment(): String = createHTML().div {
+    fun welcomeMessage(): String = createHTML().div {
         val num = Math.random() * 100
         welcomeMessageWithNumber(num)
     }

@@ -13,6 +13,7 @@ import kotlinx.html.script
 import kotlinx.html.stream.createHTML
 import kotlinx.html.style
 import kotlinx.html.title
+import kotlinx.html.unsafe
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
@@ -49,15 +50,15 @@ class HelloController {
 
 fun HEAD.htmxScript() {
     script {
-        src = "https://unpkg.com/htmx.org@1.9.5"
-        integrity = "sha384-xcuj3WpfgjlKF+FXhSQFQ0ZNr39ln+hwjN3npfM9VBnUskLolQAcN80McRIVOPuO"
+        src = "https://unpkg.com/htmx.org@2.0.4"
+        integrity = "sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+"
         attributes["crossorigin"] = "anonymous"
     }
 }
 
 fun HEAD.inlineStyles() {
     style {
-        +"div.red-border { border: 1px solid red; }"
+        unsafe { +"div.red-border { border: 1px solid red; }" }
     }
 }
 

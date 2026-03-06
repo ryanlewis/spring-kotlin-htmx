@@ -1,5 +1,6 @@
 package io.rlew.htmxdemo
 
+import kotlinx.coroutines.delay
 import kotlinx.html.*
 import kotlinx.html.stream.createHTML
 import org.springframework.web.bind.annotation.GetMapping
@@ -63,9 +64,9 @@ class LazyLoadingController {
     }
 
     @GetMapping("/lazy-loading/stats", produces = [TEXT_HTML_UTF8])
-    fun stats(): String {
+    suspend fun stats(): String {
         // Simulate an expensive operation
-        Thread.sleep(1500)
+        delay(1500)
 
         val contacts = DataStore.contacts.values
         val total = contacts.size
@@ -85,9 +86,9 @@ class LazyLoadingController {
     }
 
     @GetMapping("/lazy-loading/recent", produces = [TEXT_HTML_UTF8])
-    fun recent(): String {
+    suspend fun recent(): String {
         // Simulate another expensive operation
-        Thread.sleep(2000)
+        delay(2000)
 
         val recent = DataStore.contacts.values.sortedByDescending { it.id }.take(5)
         return createHTML().div {

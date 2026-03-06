@@ -5,10 +5,10 @@ import java.util.concurrent.atomic.AtomicLong
 
 data class Contact(
     val id: Long,
-    var firstName: String,
-    var lastName: String,
-    var email: String,
-    var active: Boolean = true
+    val firstName: String,
+    val lastName: String,
+    val email: String,
+    val active: Boolean = true
 )
 
 object DataStore {
@@ -72,18 +72,16 @@ object DataStore {
     fun get(id: Long): Contact? = contacts[id]
 
     fun update(id: Long, firstName: String, lastName: String, email: String): Contact? {
-        val contact = contacts[id] ?: return null
-        contact.firstName = firstName
-        contact.lastName = lastName
-        contact.email = email
-        return contact
+        return contacts.computeIfPresent(id) { _, existing ->
+            existing.copy(firstName = firstName, lastName = lastName, email = email)
+        }
     }
 
     fun delete(id: Long): Boolean = contacts.remove(id) != null
 
     fun setActive(id: Long, active: Boolean): Contact? {
-        val contact = contacts[id] ?: return null
-        contact.active = active
-        return contact
+        return contacts.computeIfPresent(id) { _, existing ->
+            existing.copy(active = active)
+        }
     }
 }

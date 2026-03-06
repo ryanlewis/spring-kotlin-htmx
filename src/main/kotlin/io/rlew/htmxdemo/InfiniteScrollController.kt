@@ -70,9 +70,9 @@ class InfiniteScrollController {
     }
 
     private fun TBODY.scrollRowsForPage(contacts: List<Contact>, page: Int) {
+        val hasMore = DataStore.getPage(page + 1, PAGE_SIZE).isNotEmpty()
         contacts.forEachIndexed { index, contact ->
             val isLast = index == contacts.size - 1
-            val hasMore = DataStore.getPage(page + 1, PAGE_SIZE).isNotEmpty()
             tr {
                 if (isLast && hasMore) {
                     attributes["hx-get"] = "/infinite-scroll/page?page=${page + 1}"

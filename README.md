@@ -9,16 +9,45 @@ A showcase of common [HTMX](https://htmx.org/) patterns built with
 - **No JavaScript** — HTMX handles interactivity through HTML attributes
 - **No database** — an in-memory data store keeps things simple
 
+![Home page](docs/screenshots/home.png)
+
 ## Patterns Demonstrated
 
-| Pattern | Route | What it shows |
-|---------|-------|---------------|
-| **Active Search** | `/active-search` | Real-time search-as-you-type with `hx-trigger` delay and loading indicators |
-| **Click to Edit** | `/click-to-edit` | Inline editing with `hx-get`/`hx-put` and `outerHTML` swaps |
-| **Bulk Update** | `/bulk-update` | Batch status changes with `hx-include` and targeted `hx-target` |
-| **Infinite Scroll** | `/infinite-scroll` | Automatic pagination with `hx-trigger="revealed"` |
-| **Delete Row** | `/delete-row` | Confirmation dialogs with `hx-confirm` and CSS fade-out transitions |
-| **Lazy Loading** | `/lazy-loading` | Deferred content loading with `hx-trigger="load"` and spinners |
+### Active Search
+
+Real-time search-as-you-type with `hx-trigger` delay and loading indicators.
+
+![Active Search](docs/screenshots/active-search.png)
+
+### Click to Edit
+
+Inline editing with `hx-get`/`hx-put` and `outerHTML` swaps between view and edit modes.
+
+![Click to Edit](docs/screenshots/click-to-edit.png)
+
+### Bulk Update
+
+Select multiple contacts and toggle their status in batch using `hx-include` and targeted `hx-target`.
+
+![Bulk Update](docs/screenshots/bulk-update.png)
+
+### Infinite Scroll
+
+Automatic pagination that loads more rows as you scroll, using `hx-trigger="revealed"`.
+
+![Infinite Scroll](docs/screenshots/infinite-scroll.png)
+
+### Delete Row
+
+Confirmation dialogs with `hx-confirm` and smooth CSS fade-out transitions on `hx-delete`.
+
+![Delete Row](docs/screenshots/delete-row.png)
+
+### Lazy Loading
+
+Deferred content loading with `hx-trigger="load"` and spinners for expensive operations.
+
+![Lazy Loading](docs/screenshots/lazy-loading.png)
 
 Each pattern page includes a "View source pattern" section showing the key HTMX attributes used.
 
